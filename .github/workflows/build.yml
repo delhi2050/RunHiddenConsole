@@ -14,13 +14,6 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1        # ensures msbuild is on PATH
 
-      - name: Build Win32 Release
-        run: |
-          msbuild RunHiddenConsole.sln `
-            /p:Configuration=Release /p:Platform=Win32 `
-            /p:OutDir=bin\Win32\Release\
-        shell: powershell
-
       - name: Build x64 Release
         run: |
           msbuild RunHiddenConsole.sln `
@@ -35,5 +28,4 @@ jobs:
           tag: ${{ github.ref_name }}
           name: ${{ github.ref_name }}
           artifacts: |
-            bin/Win32/Release/RunHiddenConsole.exe
             bin/x64/Release/RunHiddenConsole.exe
